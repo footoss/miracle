@@ -10,8 +10,9 @@
 <link rel="stylesheet" type="text/css" href="resource/css/main.css">
 
 <script type="text/javascript" src="resource/js/jquery.js"></script>
-<script type="text/javascript" src="resource/js/utils.js"></script>
+<script type="text/javascript" src="resource/js/list.js"></script>
 <script type="text/javascript" src="resource/js/main.js"></script>
+<script type="text/javascript" src="resource/js/list.js"></script>
 
 </head>
 <body>
@@ -28,7 +29,7 @@
 		<div id="queryReqult">
 			<span>每页</span><input type="text" id="pageSize" /><span>条记录！</span>
 			<span style="margin-left:15px;">共 <span id="totalRecords"></span> 条记录， <span id="totalPages"></span> 页！</span> 
-			<span style="margin-left:15px;">显示 第 <span id="currentPage"></span> 页，第 <span id="startRecord"></span> 至	<span id="endRecord"></span> 条记录！</span>
+			<span style="margin-left:15px;">显示 第 <span id="current"></span> 页，第 <span id="startRecord"></span> 至	<span id="endRecord"></span> 条记录！</span>
 		</div>
 	</div>
 

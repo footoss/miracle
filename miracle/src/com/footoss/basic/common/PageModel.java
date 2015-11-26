@@ -98,6 +98,7 @@ public class PageModel<T>  implements Serializable {
 	public void init(){
 		totalPages		= totalRecords/pageSize;
 		if(totalRecords % pageSize != 0) 	totalPages++;
+//		if(currentPage == lastPage)         currentPage = lastPage = totalPages;
 		if(currentPage > totalPages)		currentPage = totalPages;
 		
 		startRecord		= ((currentPage <= 0 ? 1 : currentPage)-1) * pageSize;

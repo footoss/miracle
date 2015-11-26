@@ -1,0 +1,116 @@
+*{
+	margin:0px;
+	padding: 0px;
+	font-size: 12px;
+	font-family: Source Code Pro;
+}
+
+#content,#queryDiv{
+	width: 700px;
+	margin:0 auto;
+}
+
+#query-params{
+	width: 90%;
+	margin:0 auto;
+	height : 20px;
+	line-height:20px;
+}
+
+#query-params input{
+	width:150px;
+	margin:10px auto;
+}
+
+#query-btn{
+	width:100px;
+	
+	margin:0 auto;
+	cursor: pointer;
+}
+
+
+table,tr,th,td{
+	border: 1px solid #000;
+	border-collapse:collapse;
+	text-align: center;
+	vertical-align: middle;
+	width:700px;
+	margin:0 auto;
+}
+
+th{
+	background-color: #F1D031;
+}
+
+th,tr{
+	height: 18px;
+	line-height: 18px;
+}
+
+tr:hover{
+	background-color: #FFFFA3;
+}
+
+
+#queryReqult{
+	height:30px;
+	line-height:30px;
+	text-align: center;
+	margin:10px ;
+}
+
+
+#pageSize{
+	width:50px;
+	height:15px;
+	line-height:15px;
+	text-align: center;
+	vertical-align: middle;
+	margin:0px 5px;
+}
+
+.bg-result{
+	background-color: #FFFFA3;
+}
+
+/*======================page nav=====================*/
+#pageNav{
+	margin:10px;
+	height:30px;
+	line-height:30px;
+	text-align: center;
+	vertical-align: middle;
+	float: right;
+}
+#pageNav ul{
+	margin:0 auto;
+}
+#pageNav ul li {
+		float: left;
+    height: 20px;  
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+		list-style-type: none;
+		margin-right: 10px;
+    padding: 0px 5px;
+}
+	
+.pageNo{
+		color:rgb(69, 157, 221);
+		background-color: #FFFFFF;
+}
+.pageJump{
+		color:#FFFFFF;
+		background-color: rgb(69, 157, 221);
+}
+
+.pageNo,.pageJump{
+		cursor: pointer;
+		border: 1px solid rgb(204, 204, 204);
+		-moz-border-radius: 5px;      /* Gecko browsers */
+	  -webkit-border-radius: 5px;   /* Webkit browsers */
+    border-radius:5px;            /* W3C syntax */
+}
+/*======================page nav=====================*/

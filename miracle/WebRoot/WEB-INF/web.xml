@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+				 xmlns="http://java.sun.com/xml/ns/javaee" 
+				 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+				 id="WebApp_ID" version="3.0">
+  <display-name>miracle</display-name>
+  	
+  	<!-- 自定义EL表达式 -->
+  	<jsp-config>
+  			<taglib>
+  					<taglib-uri>/eltag</taglib-uri>
+  					<taglib-location>
+  							/WEB-INF/el/ElTag.tld
+  					</taglib-location>
+  			</taglib>
+  	</jsp-config>
+  	
+  	
+  	<!-- 字符集过滤器 -->
+  	<filter>
+  			<filter-name>EncodingFilter</filter-name>
+  			<filter-class>com.footoss.miracle.web.filter.EncodingFilter</filter-class>
+  			<init-param>
+  					<param-name>encoding</param-name>
+  					<param-value>UTF-8</param-value>
+  			</init-param>
+  	</filter>
+  	
+  	<filter-mapping>
+  			<filter-name>EncodingFilter</filter-name>
+  			<servlet-name>*</servlet-name>
+  			<url-pattern>*</url-pattern>
+  	</filter-mapping>
+  	<!-- 请求日志过滤器 -->
+  	<filter>
+  			<filter-name>Request Path Log Filter</filter-name>
+  			<filter-class>com.footoss.miracle.web.filter.LogFilter</filter-class>
+  	</filter>
+  	<filter-mapping>
+  		<filter-name>Request Path Log Filter</filter-name>
+  		<url-pattern>/*</url-pattern>
+  	</filter-mapping>
+  
+  <!-- anti xss attach -->
+  	<filter>
+  			<filter-name>Anti XSS Attach</filter-name>
+  			<filter-class>com.footoss.miracle.web.filter.XssFilter</filter-class>
+  	</filter>
+  	<filter-mapping>
+  		<filter-name>Anti XSS Attach</filter-name>
+  		<url-pattern>/*</url-pattern>
+  	</filter-mapping>
+  	
+  
+  
+  <servlet>
+  	<servlet-name>Page List</servlet-name>
+  	<servlet-class>com.footoss.miracle.web.ctrl.PageCtrl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  		<servlet-name>Page List</servlet-name>
+  		<url-pattern>/page/list</url-pattern>
+  </servlet-mapping>
+  
+  
+  <error-page>
+  		<error-code>403</error-code>
+  		<location>/WEB-INF/views/error/403.jsp</location>
+  </error-page>
+  
+  <error-page>
+  		<error-code>404</error-code>
+  		<location>/WEB-INF/views/error/404.jsp</location>
+  </error-page>
+
+  <error-page>
+  		<error-code>500</error-code>
+  		<location>/WEB-INF/views/error/500.jsp</location>
+  </error-page>
+  
+   <error-page>
+  		<error-code>505</error-code>
+  		<location>/WEB-INF/views/error/505.jsp</location>
+  </error-page>
+
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="resource/css/main.css">
 
 <script type="text/javascript" src="resource/js/jquery.js"></script>
-<script type="text/javascript" src="resource/js/list.js"></script>
+<script type="text/javascript" src="resource/js/util.js"></script>
 <script type="text/javascript" src="resource/js/main.js"></script>
 <script type="text/javascript" src="resource/js/list.js"></script>
 

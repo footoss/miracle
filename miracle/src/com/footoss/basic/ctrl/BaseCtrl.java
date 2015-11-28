@@ -32,6 +32,12 @@ public class BaseCtrl extends HttpServlet {
 		return output(json, response);
 	}
 	
+	public String getJSON(Object obj) {
+		String json = new GsonBuilder().setDateFormat(Constants.DATE_TIME_FORMAT).create().toJson(obj);
+		logger.info(json);
+		return json;
+	}
+	
 	public String output(Object obj, HttpServletResponse response) {
 		response.setCharacterEncoding(Constants.CHARSET);
 		try {

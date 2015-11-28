@@ -19,7 +19,7 @@
 <div id="content">
 
 	<div class="oper">
-		<div class="qaudc add">添加</div>
+		<div id="add-init-btn" class="qaudc add">添加</div>
 		<div class="qaudc update">修改</div>
 		<div class="qaudc delete">删除</div>
 		<div class="qaudc config">配置</div>
@@ -57,5 +57,11 @@
 	<div id="pageNav">
 	</div>
 </div>
-</body>
+
+<div id="add-content"></div><%-- 不能换行 --%>
+
+<div id="update-div"></div><%-- 不能换行 --%>
+
+<div id="config-div"></div><%-- 不能换行 --%>
+
 </html>

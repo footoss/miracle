@@ -55,12 +55,22 @@
   
   <servlet>
   	<servlet-name>User List</servlet-name>
-  	<servlet-class>com.footoss.miracle.web.ctrl.UserCtrl</servlet-class>
+  	<servlet-class>com.footoss.miracle.web.ctrl.user.UserListCtrl</servlet-class>
   </servlet>
   
   <servlet-mapping>
   		<servlet-name>User List</servlet-name>
   		<url-pattern>/user/list</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>User Add</servlet-name>
+  	<servlet-class>com.footoss.miracle.web.ctrl.user.UserAddCtrl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  		<servlet-name>User Add</servlet-name>
+  		<url-pattern>/user/add</url-pattern>
   </servlet-mapping>
   
   

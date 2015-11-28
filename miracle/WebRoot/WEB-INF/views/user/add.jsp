@@ -1,23 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="/eltag" prefix="el" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>User List</title>
-<base href="${el:basePath(pageContext.request) }" /> 
 
-<link rel="stylesheet" type="text/css" href="resource/css/main.css">
-
-<script type="text/javascript" src="resource/js/jquery.js"></script>
-<script type="text/javascript" src="resource/js/utils.js"></script>
-<script type="text/javascript" src="resource/js/main.js"></script>
-
-</head>
-<body>
-<div id="content">
-
+<div id="add-div">
+	<div>添加用户</div>
+	<div>
+		<label for="add-name">姓名：</label>
+		<div style="display:inline-block;"><input type="text" id="add-name" /></div>
+	</div>
 	
+	<div>
+		<label for="add-age">年龄：</label>
+		<div style="display:inline-block;"><input type="text" id="add-age" /></div>
+	</div>
+	<div>
+		<div id="add-btn" class="qaudc add">添加</div>
+		<div id="add-clear-btn" class="qaudc clear">清空</div>
+		<div id="add-cancel-btn" class="qaudc cancel">取消</div>
+	</div>
 </div>
-</body>
-</html>
+
+<div id="auc" class="mask opacity"></div>
+	

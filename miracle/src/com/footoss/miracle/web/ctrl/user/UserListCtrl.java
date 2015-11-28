@@ -1,4 +1,4 @@
-package com.footoss.miracle.web.ctrl;
+package com.footoss.miracle.web.ctrl.user;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -19,13 +19,13 @@ import com.footoss.miracle.service.UserService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-public class UserCtrl extends BaseCtrl {
+public class UserListCtrl extends BaseCtrl {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 9167202579673171395L;
-	private static Logger logger = Logger.getLogger(UserCtrl.class.getName());
+	private static Logger logger = Logger.getLogger(UserListCtrl.class.getName());
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 

@@ -18,4 +18,25 @@ $(document).ready(function(){
 			 $('#query-btn').trigger('click');
 		 }
 	});
+	
+	
+	var add_HTML = '';
+	$('#add-init-btn').click(function(){
+		if(!add_HTML){
+			$.get(contextPath()+'/user/add',function(data){	
+				add_HTML = data; 
+				displayAdd(add_HTML);
+			});
+		}else{
+			displayAdd(add_HTML);
+		}
+	});
+	
+	function displayAdd(data){
+		$('#add-content').html(data);
+		$('#add-cancel-btn').click(function(){
+			$('#add-content').html('');
+		});
+	}
+	
 });

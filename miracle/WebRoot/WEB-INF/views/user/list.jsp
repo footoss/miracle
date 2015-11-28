@@ -33,6 +33,7 @@
 			<input type="text" id="age" class="queryParam"  placeholder="年龄" /> 
 		<!-- 	<button id="query-btn" class="query-btn">查询</button>  -->
 			<div id="query-btn" class="qaudc query">搜索</div>
+			<div id="clear-btn" class="qaudc clear">清空</div>
 		</div>
 		
 		<div id="queryReqult">

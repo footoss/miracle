@@ -25,17 +25,41 @@ $(document).ready(function(){
 		if(!add_HTML){
 			$.get(contextPath()+'/user/add',function(data){	
 				add_HTML = data; 
-				displayAdd(add_HTML);
+				initAddPage(add_HTML);
 			});
 		}else{
-			displayAdd(add_HTML);
+			initAddPage(add_HTML);
 		}
 	});
 	
-	function displayAdd(data){
+	function initAddPage(data){
 		$('#add-content').html(data);
 		$('#add-cancel-btn').click(function(){
 			$('#add-content').html('');
+		});
+		$('#add-btn').click(function(){
+			var user = {};
+			if($('#add-name').val()){ 
+				user.name = $('#add-name').val(); 
+			}else{
+				alert('姓名不能为空');
+				return;
+			}
+			if($('#add-age').val()) { 
+				user.age  = $('#add-age').val(); 
+			}else{
+				alert('年龄不能为空！');
+				return;
+			}
+			var user_JSON = JSON.stringify(user);
+			$.post(contextPath()+'/user/add', user_JSON,function(data,status){
+				var row = '<tr><td> <input type="checkbox" class="todo" value="'+data["id"]+'" /></td><td>'
+								+data["name"]+'</td><td>'+data["age"]+'</td></tr>'
+				$('#list tr:first').before(row);
+				$('#list tr:first').css({"background-color":"#C3FFFF"});
+				setTimeout(function(){$('#list tr:first').css({"background-color":"#FFFFFF"});},1000);
+				$('#add-content').html('');
+			},'json');
 		});
 	}
 	

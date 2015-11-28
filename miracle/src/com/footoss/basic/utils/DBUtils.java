@@ -38,7 +38,7 @@ public class DBUtils {
 		return null;
 	}
 	
-	public void close(Connection conn,PreparedStatement pstmt, ResultSet rs){
+	public static void close(Connection conn,PreparedStatement pstmt, ResultSet rs){
 		try {
 			if(null != conn) 
 				conn.close();

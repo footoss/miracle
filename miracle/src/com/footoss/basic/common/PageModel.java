@@ -24,7 +24,7 @@ public class PageModel<T>  implements Serializable {
 	private String sort;//排序子段
 	private String order;//升序或降序
 	
-	private Map<String , Object> queryParams ;//= new HashMap<>();//查询条件
+	private Map<String , Object> queryParams = new HashMap<>();//查询条件
 	private List<T> rows;//查询结果
 	
 	/**

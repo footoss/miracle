@@ -8,6 +8,6 @@
 <base href="${el:basePath(pageContext.request) }" /> 
 </head>
 <body>
-<jsp:forward page="/WEB-INF/views/page/list.jsp"></jsp:forward>
+<jsp:forward page="/WEB-INF/views/user/list.jsp"></jsp:forward>
 </body>
 </html>

@@ -10,37 +10,52 @@
 	margin:0 auto;
 }
 
+/*===========================*/
+
+.qaudc{
+	  width: 80px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid rgb(204, 204, 204);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: rgb(69, 157, 221);
+}
+
+/*===========================*/
+
 #query-params{
 	width: 90%;
-	margin:0 auto;
+	margin:10px auto;
 	height : 20px;
 	line-height:20px;
 }
 
-#query-params input{
+.queryParam{
 	width:150px;
-	margin:10px auto;
+	height : 20px;
+	line-height:20px;
+	margin-top: -20px;
 }
-
-#query-btn{
-	width:100px;
-	
-	margin:0 auto;
-	cursor: pointer;
-}
-
 
 table,tr,th,td{
 	border: 1px solid #000;
 	border-collapse:collapse;
 	text-align: center;
 	vertical-align: middle;
-	width:700px;
+	width:699px;
 	margin:0 auto;
 }
 
 th{
-	background-color: #F1D031;
+	background-color: #FFCF00;
 }
 
 th,tr{
@@ -52,12 +67,15 @@ tr:hover{
 	background-color: #FFFFA3;
 }
 
+.todo{
+	vertical-align: middle;
+}
+
 
 #queryReqult{
 	height:30px;
 	line-height:30px;
 	text-align: center;
-	margin:10px ;
 }
 
 
@@ -71,7 +89,7 @@ tr:hover{
 }
 
 .bg-result{
-	background-color: #FFFFA3;
+	background-color: #C3FFFF;
 }
 
 /*======================page nav=====================*/

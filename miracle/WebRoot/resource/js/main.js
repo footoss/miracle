@@ -49,27 +49,27 @@ function getPageNav(navSize,currentPage,lastPage){
 		for(var i = 1 ; i <= navSize ; i++){
 			var pageNo = i;
 			if(currentPage != i){
-				pageNos += '<li id="pn-'+i+'" pn="'+i+'" class="pageNav-btn pageNo" >'+pageNo+'</li>';
+				pageNos += '<li id="pn-'+pageNo+'" pn="'+pageNo+'" class="pageNav-btn pageNo" >'+pageNo+'</li>';
 			}else{
-				pageNos += '<li id="currentPage" pn="'+i+'"  class="pageNav-btn current" >-'+pageNo+'-</li>';
+				pageNos += '<li id="currentPage" pn="'+pageNo+'"  class="pageNav-btn current" >-'+pageNo+'-</li>';
 			}
 		}
 	}else if(lastPage - currentPage < middleNav){
 		for(var j = 1; j <= navSize ; j++){
 			var pageNo = lastPage - navSize + j;
 			if(pageNo != currentPage){
-				pageNos += '<li id="pn-'+j+'" pn="'+j+'"  class="pageNav-btn pageNo" >'+pageNo+'</li>';
+				pageNos += '<li id="pn-'+pageNo+'" pn="'+pageNo+'"  class="pageNav-btn pageNo" >'+pageNo+'</li>';
 			}else{
-				pageNos += '<li id="currentPage" pn="'+j+'"  class="pageNav-btn current">-'+pageNo+'-</li>';
+				pageNos += '<li id="currentPage" pn="'+pageNo+'"  class="pageNav-btn current">-'+pageNo+'-</li>';
 			}
 		}
-	}else if(currentPage>middleNav && (lastPage - currentPage)>middleNav){
+	}else if(currentPage>middleNav && (lastPage - currentPage) >= middleNav){
 		for(var k=1 ; k <= navSize; k++){
 			var pageNo = currentPage + k -middleNav;
 			if(pageNo != currentPage){
-				pageNos += '<li id="pn-'+k+'" pn="'+k+'" class="pageNav-btn pageNo" >'+pageNo+'</li>';
+				pageNos += '<li id="pn-'+pageNo+'" pn="'+pageNo+'" class="pageNav-btn pageNo" >'+pageNo+'</li>';
 			}else{
-				pageNos += '<li id="currentPage" pn="'+k+'" class="pageNav-btn current" >-'+pageNo+'-</li>';
+				pageNos += '<li id="currentPage" pn="'+pageNo+'" class="pageNav-btn current" >-'+pageNo+'-</li>';
 			}
 		}
 	}
@@ -89,7 +89,7 @@ function loadList(json,url){
 		complete:function(){
 			setTimeout(function(){
 				$('#queryReqult').removeClass('bg-result');
-			}, 200)
+			}, 500)
 		},
 		statusCode: {
 		    404: function() {
@@ -103,61 +103,65 @@ function loadList(json,url){
 			alert('error');
 		}
 	});
-}
-
-function successCallback(data){
-	setList(data);
-	setResultSummary(data);
-	setPageNav(data);
-}
-
-function setResultSummary(data){
-	$('#pageSize').val( data.pageSize);
-	$('#totalRecords').html ( data.totalRecords);
-	if(data.totalRecords == 0){
-		$('#startRecord').html( 0 );
-	}else{
-		$('#startRecord').html( data.startRecord + 1);
-	}
-	if(data.endRecord >= data.totalRecords ){
-		$('#endRecord').html( data.totalRecords);
-	}else{
-		$('#endRecord').html( data.endRecord + 1);
-	}
-	$('#current').html ( data.currentPage);
-	$('#totalPages').html ( data.totalPages);
 	
-	$('#queryReqult').addClass('bg-result');
-}
 
-function setList(data){
-	var dataList = data.rows;
-	var tbody = '';
-	var len = dataList.length;
-	if(len > 0){
-		for(var i = 0 ; i < len; i++){
-			var rowData = dataList[i];
-			var tr = '<tr> <td>'+ rowData.id + '</td> <td>' 
-				+ rowData.name +   '</td> <td>'
-				+ rowData.age  +   '</td></tr>';
-			tbody += tr;
+	function successCallback(data){
+		setList(data);
+		setResultSummary(data);
+		setPageNav(data,url);
+	}
+
+	function setResultSummary(data){
+		$('#pageSize').val( data.pageSize);
+		$('#totalRecords').html ( data.totalRecords);
+		if(data.totalRecords == 0){
+			$('#startRecord').html( 0 );
+		}else{
+			$('#startRecord').html( data.startRecord + 1);
 		}
-	}else{
-		tbody = '<tr><td colspan="3" style="color:red"> 没有符合搜索条件的结果！</td></tr>' 
+		if(data.endRecord >= data.totalRecords ){
+			$('#endRecord').html( data.totalRecords);
+		}else{
+			$('#endRecord').html( data.endRecord + 1);
+		}
+		$('#current').html ( data.currentPage);
+		$('#totalPages').html ( data.totalPages);
+		
+		$('#queryReqult').addClass('bg-result');
 	}
-//		console.log(tbody);
-	$('#list').html ( tbody);
-}
 
-function setPageNav(data){
-	var pageNav = getPageNav(data.navSize,data.currentPage,data.totalPages);
-//		console.log(pageNav);
-	$('#pageNav').html(pageNav);
-	
-	$('.pageNav-btn').click(function(){
-		var pageSize 	= parseInt($('#pageSize').val());
-		var currentPage = parseInt(this.getAttribute('pn')); //this.id.split('-')[1];
-		var lastPage 	= parseInt($('#lastPage').attr('pn')) || 1;
-		loadList(getPageModel(pageSize,currentPage,lastPage), '/page/list');	
-	});
+	function setList(data){
+		var dataList = data.rows;
+		var tbody = '';
+		var len = dataList.length;
+		if(len > 0){
+			for(var i = 0 ; i < len; i++){
+				var rowData = dataList[i];
+				var tr = '<tr> <td> <input type="checkbox" class="todo" id="todo-'+ rowData.id + '" value="'+ rowData.id +'" /></td> <td>' 
+					+ rowData.name +   '</td> <td>'
+					+ rowData.age  +   '</td></tr>';
+				tbody += tr;
+			}
+		}else{
+			tbody = '<tr><td colspan="3" style="color:red"> 没有符合搜索条件的结果！</td></tr>' 
+		}
+//			console.log(tbody);
+		$('#list').html ( tbody);
+	}
+
+	function setPageNav(data,url){
+		var pageNav = getPageNav(data.navSize,data.currentPage,data.totalPages);
+//			console.log(pageNav);
+		$('#pageNav').html(pageNav,url);
+		
+		if($('.pageNav-btn')){
+			$('.pageNav-btn').click(function(){
+				var pageSize 	= parseInt($('#pageSize').val());
+				var currentPage = parseInt(this.getAttribute('pn')); //this.id.split('-')[1];
+				var lastPage 	= parseInt($('#lastPage').attr('pn')) || 1;
+				loadList(getPageModel(pageSize,currentPage,lastPage), url);	
+			});
+		}
+		
+	}
 }

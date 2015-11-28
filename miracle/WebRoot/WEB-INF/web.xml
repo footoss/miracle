@@ -54,13 +54,13 @@
   
   
   <servlet>
-  	<servlet-name>Page List</servlet-name>
-  	<servlet-class>com.footoss.miracle.web.ctrl.PageCtrl</servlet-class>
+  	<servlet-name>User List</servlet-name>
+  	<servlet-class>com.footoss.miracle.web.ctrl.UserCtrl</servlet-class>
   </servlet>
   
   <servlet-mapping>
-  		<servlet-name>Page List</servlet-name>
-  		<url-pattern>/page/list</url-pattern>
+  		<servlet-name>User List</servlet-name>
+  		<url-pattern>/user/list</url-pattern>
   </servlet-mapping>
   
   

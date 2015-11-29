@@ -53,11 +53,12 @@ $(document).ready(function(){
 			}
 			var user_JSON = JSON.stringify(user);
 			$.post(contextPath()+'/user/add', user_JSON,function(data,status){
+				console.log(status);
 				var row = '<tr><td> <input type="checkbox" class="todo" value="'+data["id"]+'" /></td><td>'
 								+data["name"]+'</td><td>'+data["age"]+'</td></tr>'
 				$('#list tr:first').before(row);
-				$('#list tr:first').css({"background-color":"#C3FFFF"});
-				setTimeout(function(){$('#list tr:first').css({"background-color":"#FFFFFF"});},1000);
+				$('#list tr:first').css({"background-color":"#00FF00"});
+				setTimeout(function(){$('#list tr:first').css({"background-color":"#FFFFFF"});},3000);
 				$('#add-content').html('');
 			},'json');
 		});

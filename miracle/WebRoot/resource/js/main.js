@@ -85,7 +85,7 @@ function loadList(json,url){
 		complete:function(){
 			setTimeout(function(){
 				$('#queryReqult').removeClass('bg-result');
-			}, 1000)
+			}, 1500)
 		},
 		statusCode: {
 		    404: function() {

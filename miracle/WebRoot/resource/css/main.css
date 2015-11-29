@@ -13,10 +13,10 @@
 /*===========================*/
 
 .qaudc{
-	  width: 60px;
-    height: 25px;
-    line-height: 25px;
-    font-size: 14px;
+	  padding: 0px 5px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
     text-align: center;
     vertical-align: middle;
     display: inline-block;
@@ -43,8 +43,8 @@
 
 .queryParam{
 	width:150px;
-	height : 20px;
-	line-height:20px;
+	height : 18px;
+	line-height:18px;
 	margin-top: -20px;
 }
 

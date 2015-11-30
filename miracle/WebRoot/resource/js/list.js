@@ -62,6 +62,12 @@ $(document).ready(function(){
 				$('#add-content').html('');
 			},'json');
 		});
+		
+		$('.add-param').keydown(function(event){
+			 if(event.keyCode == 13){
+				 $('#add-btn').trigger('click');
+			 }
+		});
 	}
 	
 });

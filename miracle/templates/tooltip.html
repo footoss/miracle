@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+.content{position:relative;width:200px;margin:auto;}
+.holder{position:relative;top:0px;left:0px; cursor:pointer; width:200px;font-size:15px;margin:3px;}
+.toolTipBox{position:absolute;top:16px;left:0px;width:100px;height:60px;line-height:60px;text-align:center;
+		display:none;cursor:pointer;}
+ /*箭头向左*/
+.arrow-left {width:0; height:0;margin-left: 35px; border-left:15px solid transparent;border-bottom:15px solid yellow; border-right:15px solid transparent; }
+.txt{background-color:yellow;box-shadow: 10px 10px 5px #888888;}
+</style>
+<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery
+/jquery-1.4.min.js"></script>
+</head>
+<body>
+<div id="wrapper">
+	<div class="content">
+		<a class="holder" href="#" id="holder1">
+				User Name
+		</a>
+		<div class="toolTipBox" style="" id="toolTipBox1">
+			<div class="arrow-left"></div>
+			<div class="txt">Hi,toolTip;</div>
+		</div>
+		<div>Some Text A here</div>
+	</div>
+	<div>Some Text B here</div>
+	
+	<div class="content" style="top:200px;">
+		<a class="holder" href="#"  id="holder2">
+				User Name
+		</a>
+		<div class="toolTipBox" style="" id="toolTipBox2">
+			<div class="arrow-left"></div>
+			<div class="txt">Hi,toolTip;</div>
+		</div>
+		<div>Some Text C here</div>
+	</div>
+	<div>Some Text D here</div>
+</div>
+	<script>
+	
+	$(function(){
+		$("#wrapper")[0].onmouseover = function(e){
+			var targ;
+			if (!e) var e = window.event;
+			
+			if (e.target) targ = e.target;
+			else if (e.srcElement) targ = e.srcElement;
+			
+			if (targ.nodeType == 3) // defeat Safari bug
+			   targ = targ.parentNode;
+			   
+			var tClsName = targ.className;
+			
+			if(/holder/.test(tClsName)){
+				var index = targ.id[targ.id.length-1];
+				var toolTipBoxIndex = "#toolTipBox"+index;
+				var toolTipBox = $(toolTipBoxIndex)[0];
+				targ.onmouseover = function() {
+					toolTipBox.style.display = "block";
+				};
+				
+				targ.onmouseout = function() {
+					toolTip(toolTipBox);
+					if(toolTipBox.style.display === "block"){
+						toolTipBox.style.display = "none";
+					}
+				};
+			}
+			
+			function toolTip(toolTipBox){
+				toolTipBox.onmouseover = function() {
+					toolTipBox.style.display = "block";
+				};
+				toolTipBox.onmouseout = function() {
+					toolTipBox.style.display = "none";
+				};
+			}
+		}
+	});
+	</script>
+</div>
+</body>
+<!--
+鼠标在holder，toolTipBox之上时，toolTipBox显示
+离开之时，toolTipBox 不显示
+******************************************************
+holder onmouseover时  toolTipBox最终状态是显示
+------------------------------------------------------
+holder onmouseout时，
+如果,toolTipBox是onmouseover状态，toolTipBox显示
+如果,toolTipBox是onmouseout状态，toolTipBox不显示
+最终,如果toolTipBox显示,toolTipBox需要改为不显示
+******************************************************
+-->
+<html>

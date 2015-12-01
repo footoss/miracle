@@ -13,6 +13,7 @@
 <script type="text/javascript" src="resource/js/utils.js"></script>
 <script type="text/javascript" src="resource/js/main.js"></script>
 <script type="text/javascript" src="resource/js/list.js"></script>
+<script type="text/javascript" src="resource/js/add.js"></script>
 
 </head>
 <body>

@@ -165,7 +165,7 @@ tr:hover{
 		left:35%; 
 		z-index:1001; 
 		padding:3px;
-		
+		overflow: hidden;
 }
 
 #add-div div{
@@ -186,6 +186,21 @@ tr:hover{
 
 .tooltip:hover {
 	background-color: rgb(69, 157, 221);
+}
+
+.tooltipBox{
+	z-index:"9999",
+	background-color:"#FFFF33",
+	border:"1px solid #FFFF00"
+}
+
+#arrow-left {
+	width:0; 
+	height:0;
+	margin-left: 35px; 
+	border-left:15px solid transparent;
+	border-bottom:15px solid yellow; 
+	border-right:15px solid transparent; 
 }
 
 /*=========================tooltip==========================*/

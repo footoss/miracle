@@ -80,7 +80,6 @@ function showTooltip(target,tipHtml,width,height,direction){
 	
 }
 
-$('.tooltip').on(mouseover,function(){
-	showTooltip('','abc');
-});
+
+
 })();

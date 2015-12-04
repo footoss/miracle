@@ -194,13 +194,24 @@ tr:hover{
 	border:"1px solid #FFFF00"
 }
 
-#arrow-left {
-	width:0; 
-	height:0;
-	margin-left: 35px; 
-	border-left:15px solid transparent;
-	border-bottom:15px solid yellow; 
-	border-right:15px solid transparent; 
+.arrow-left {
+	  width: 0;
+    height: 0;
+    border-right: 15px solid #FFFF83;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    position: absolute;
+    left: -15px;
+    top: 50px;
 }
 
+.tips{
+	margin:5px 10px;
+}
+
+.tips li{
+	list-style-type: none;
+	text-align: left;
+	
+}
 /*=========================tooltip==========================*/

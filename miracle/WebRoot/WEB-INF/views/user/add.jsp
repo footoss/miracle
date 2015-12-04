@@ -43,17 +43,12 @@
 		 			isToolTipHover = true;
 		 
 		 			var target = $(this);
-				 	var tooltipBox = $('<div class="tooltipBox">asdfasdf</div>');
-				 	target.parent().append(tooltipBox);
-				 	var width = 80;
-				 	var height = 60;
-				 	var offset = target.offset();
-				 	var left = offset.left + target.width() + 20;
-				 	var top = offset.top - target.height()/2 -height/2;
-				 	$('.tooltipBox').css({"position":"fixed","display":"block","width":width+"px",
-				 												"height":height+"px","left":left+"px","top":top+"px","z-index":"9999",
-				 												"background-color":"#FFFF93","border":"1px solid #EEEE00"
-				 												});
+		 			var tips = [];
+		 			tips.push('asdfasdf');
+		 			tips.push('cvbdsffsfd');
+		 			tips.push('lkjlkkj');
+		 			showTooltipBox(target,'fixed',160,120,tips);
+		 			
 				 	
 				 	$('.tooltipBox').hover(
 				 			function(){
@@ -75,6 +70,26 @@
 			 if(!isToolTipBoxHover && !isToolTipBoxHover){
 		   		$('.tooltipBox').remove();
 	   		}
+		 }
+		 
+		 function showTooltipBox(target,pos,width,height,tips){
+			 	
+			 	var tipContent = '';
+			 	for(var i = 0 ; i < tips.length ; i++){
+			 		tipContent += '<li>' + tips[i] + '</li>';
+			 	}
+			 	
+			 	var tooltipBox = $('<div class="tooltipBox"><span class="arrow-left"></span><ul class="tips">'+tipContent+'</ul></div>');
+			 	
+			 	target.parent().append(tooltipBox);
+			 	
+			 	var offset = target.offset();
+			 	var left = offset.left + target.width() + 20;
+			 	var top = offset.top - target.height()/2 -height/2;
+			 	$('.tooltipBox').css({"position":pos,"display":"block","width":width+"px",
+			 												"height":height+"px","left":left+"px","top":top+"px","z-index":"9999",
+			 												"background-color":"#FFFF93","border":"1px solid #EEEE00"
+			 												});
 		 }
 	 
 })();

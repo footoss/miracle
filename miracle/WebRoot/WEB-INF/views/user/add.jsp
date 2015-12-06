@@ -24,19 +24,8 @@
 <script>
 (function(){
 	
-	var target = document.getElementsByClassName('tooltip');
-	var len = target.length;
-	for(var i = 0; i  < len;i++){
-		target[i].onmouseover = function(){
-			
-		}
-		
-		target[i].onmouseout = function(){
-			
-		}
-	}
 	
-	 var isToolTipHover = false,
+/* 	 var isToolTipHover = false,
 	 		 isToolTipBoxHover = false; 
 	 $('.tooltip').hover(
 			 function () {
@@ -47,7 +36,8 @@
 		 			tips.push('asdfasdf');
 		 			tips.push('cvbdsffsfd');
 		 			tips.push('lkjlkkj');
-		 			showTooltipBox(target,'fixed',160,120,tips);
+		 			 
+		 			createTooltipBox(target,'fixed',160,120,tips);
 		 			
 				 	
 				 	$('.tooltipBox').hover(
@@ -72,25 +62,170 @@
 	   		}
 		 }
 		 
-		 function showTooltipBox(target,pos,width,height,tips){
+		 function createTooltipBox(target,pos,width,height,tips){
 			 	
 			 	var tipContent = '';
-			 	for(var i = 0 ; i < tips.length ; i++){
-			 		tipContent += '<li>' + tips[i] + '</li>';
+			 	if(tips){
+				 	for(var i = 0 ; i < tips.length ; i++){
+				 		tipContent += '<li>' + tips[i] + '</li>';
+				 	}
+			 	}else{
+			 		tipContent += '<li></li>';
 			 	}
 			 	
-			 	var tooltipBox = $('<div class="tooltipBox"><span class="arrow-left"></span><ul class="tips">'+tipContent+'</ul></div>');
+			 	var tooltipBox = $('<div class="tooltipBox"><span class="arrow-left"></span><ul class="tips">'
+			 										+tipContent+'</ul></div>');
 			 	
 			 	target.parent().append(tooltipBox);
 			 	
+			 	var boxWidth = width ? width + 'px' : 'auto';
+			 	var boxHeight=height ?height + 'px' : 'auto'
+			 	
 			 	var offset = target.offset();
-			 	var left = offset.left + target.width() + 20;
-			 	var top = offset.top - target.height()/2 -height/2;
-			 	$('.tooltipBox').css({"position":pos,"display":"block","width":width+"px",
-			 												"height":height+"px","left":left+"px","top":top+"px","z-index":"9999",
-			 												"background-color":"#FFFF93","border":"1px solid #EEEE00"
+			 	var left = offset.left + target.width() + 15 + 'px';
+			 	var top = offset.top - target.height()/2 -height/2 + 'px';
+			 	
+			 	$('.tooltipBox').css({"position":pos,"display":"block","width":boxWidth,
+			 												"height":boxHeight,"left":left,"top":top,"z-index":"9999",
+			 												"background-color":"#FFFFA3","border":"1px solid #EEEE00"
 			 												});
-		 }
+		 } */
 	 
-})();
+		 
+		 var com = window.com || {};
+		 console.log(com);
+		 var NS = window.NS || {};
+		 NS._registerNS = function(ns){
+			 var levels = ns.split('\.');
+			 var ns = com;
+			 for(var i = (levels[0] == 'com')? 1 : 0 ; i < levels.length ; i++ ){
+				 ns[levels[i]] = ns[levels[i]] || {};
+				 ns = ns[levels[i]];
+			 }
+			 return ns;
+		 }
+		 
+		 NS._createjsClass = function() {
+			  return function() {
+			    	this._defaultInitializer.apply(this,arguments); 
+			    }
+			}
+		 
+		 NS._registerNS('com.footoss.ui');
+		 NS._registerNS('com.footoss.conf.ui');
+
+		 com.footoss.conf.ui.Tip = {
+				 defaultAnimate:{
+//					 position:'fixed',
+					 width:80,
+					 height:60,
+					 display:'block'
+				 }
+		 }
+		 com.footoss.ui.Tip = NS._createjsClass();
+		 
+		 com.footoss.ui.Tip.prototype = {
+				 _defaultInitializer : function(tooltipClassName,instanceName){
+					 if(!document.getElementsByClassName(tooltipClassName)){
+						 throw new Error('Cannot get ref elem by '+id+' , maybe arguments raise an error!');
+					 }
+					 this.defaultAnimate = com.footoss.conf.ui.Tip.defaultAnimate;
+					 
+					 this.name = instanceName;
+					 this.tooltips = document.getElementsByClassName(tooltipClassName);
+					 this.tooltipBox = null;// this.tooltipWrapper.getElementsByClassName('tooltipBox');
+					 
+					 this.showBox = null;
+					 this.closeBox= null;
+					 
+					 this.heights = [];
+					 this.animate = this.defaultAnimate;
+					 
+					 
+					 this.isTooltipHover = false;
+					 this.isTooltipBoxHover = false;
+					 return this;
+				 },
+				render : function(){
+					
+					for(var i = 0 ; i < this.tooltips.length ; i++){
+						this.tooltips[i].onmouseover = new Function(this.name+ ".expandBox(" +i+ ");");
+						this.tooltips[i].onmouseout  = new Function(this.name+ ".removeBox();");
+						
+					}
+					this.tooltips = null;
+					this.tooltipBox = null;
+					return this;
+				},
+				setStyle : function(name){
+					return this;
+				},
+				setAnimate : function(oAnimate){
+					if(typeof oAnimate != 'object'){
+						return this;
+					}
+					this.animate = {
+//							delay : parseInt(oAnimate.delay) || this.defaultAnimate.delay
+					};
+					return this;
+				},
+				expandBox :  function(ithTooltips){
+					/* if(this.isAnimate)	 return;
+					var self = this;
+					this.closeBox = this.expandBox; */
+					this.isTooltipHover = true;
+					var hoverTooltipTarget = document.getElementsByClassName('tooltip')[ithTooltips];
+					
+					var box = document.createElement("div");
+					hoverTooltipTarget.parentNode.appendChild(box);
+					
+					box.id = ithTooltips + 'tooltipBox' ;
+					box.innerHTML = 'asdfasdfhasjkdfhjahsdflkjahsldf';
+					box.style.width = this.defaultAnimate.width? this.defaultAnimate.width+"px":"auto";
+					box.style.height= this.defaultAnimate.height?this.defaultAnimate.height+"px":"auto";
+					
+					var left = hoverTooltipTarget.offsetLeft;
+					var top  = hoverTooltipTarget.offsetTop;
+					
+					box.style.top  = top - box.offsetHeight/2 + 'px';
+					box.style.left = left + hoverTooltipTarget.offsetWidth + 'px';
+					
+					box.style.position = this.defaultAnimate.position || 'absolute';
+					box.style.display  = 'block';
+					box.style.backgroundColor  = '#FFFFA3';
+
+					
+					
+					this.tooltipBox = box;
+					var bindBox = new Function(this.name+ ".bindBox();");
+					bindBox();
+				},
+				removeBox : function(){
+					this.isTooltipHover = false;
+					var bindBox = new Function(this.name+ ".bindBox();");
+					bindBox();
+				},
+				bindBox : function(){
+					var that = this;
+					this.tooltipBox.onmouseover = function(){
+						that.isTooltipBoxHover = true;
+					};
+					this.tooltipBox.onmouseout = function(){
+						that.isTooltipBoxHover = false;
+						var delayRemoveBox = new Function(that.name+ ".delayRemoveBox();");
+						setTimeout(delayRemoveBox,300);
+					};
+				},
+				delayRemoveBox: function(){
+					console.log(this.isTooltipHover);
+					console.log(this.isTooltipBoxHover);
+					if(!this.isTooltipHover && !this.isTooltipBoxHover){
+						this.tooltipBox.parentNode.removeChild(this.tooltipBox);
+					}
+				}
+		 }
+		 
+		 o = new com.footoss.ui.Tip('tooltip','o').render();
+		 
+ })();
 </script>

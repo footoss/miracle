@@ -16,7 +16,8 @@ h1,h2,h3,h4,h5,h6{
 
 p{
 	text-indent: 4em;
-	margin: 15px 5px;
+	margin: 10px 5px;
+	padding:5px 10px; 
 	line-height: 1.5em;
 }
 
@@ -38,6 +39,7 @@ fieldset {
 legend{
 	font-weight: bold;
 }
+
 code {
 	
 }

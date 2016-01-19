@@ -12,5 +12,7 @@
 Welcome!<br />
 <a href="user/list">用户管理</a>
 
+<jsp:forward page="/WEB-INF/views/article/text.jsp"></jsp:forward>
+
 </body>
 </html>

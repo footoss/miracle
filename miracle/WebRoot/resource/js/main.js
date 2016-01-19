@@ -41,6 +41,26 @@ function getPageNav(navSize,currentPage,lastPage){
 	}
 
 	var pageNos = '';
+	var pageNo = 0;
+	for(var i = 1; i <= navSize; i++){
+		// get pageNo
+		if(currentPage <= middleNav) {
+			pageNo = i;
+		}else if(lastPage - currentPage < middleNav){
+			pageNo = lastPage - navSize + i;
+		}else if(currentPage>middleNav && (lastPage - currentPage) >= middleNav){
+			pageNo = currentPage + i -middleNav;
+		}
+		
+		//get row
+		if(pageNo != currentPage){
+			pageNos += '<li id="pn-'+pageNo+'" pn="'+pageNo+'"  class="pageNav-btn pageNo" >'+pageNo+'</li>';
+		}else{
+			pageNos += '<li id="currentPage" pn="'+pageNo+'"  class="pageNav-btn current">-'+pageNo+'-</li>';
+		}
+	}
+	
+	/*
 	if(currentPage <= middleNav) {
 		for(var i = 1 ; i <= navSize ; i++){
 			var pageNo = i;
@@ -69,7 +89,8 @@ function getPageNav(navSize,currentPage,lastPage){
 			}
 		}
 	}
-
+   */
+	
 	pageNav = '<ul>' + head + pageNos + tail + '</ul>';
 	return pageNav;
 }

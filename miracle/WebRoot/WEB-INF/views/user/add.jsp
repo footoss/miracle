@@ -197,8 +197,8 @@
 					
 					
 					this.tooltipBox = box;
-					var bindBox = new Function(this.name+ ".bindBox();");
-					bindBox();
+					/* var bindBox = new Function(this.name+ ".bindBox();");
+					bindBox(); */
 				},
 				removeBox : function(){
 					this.isTooltipHover = false;
@@ -206,14 +206,15 @@
 					bindBox();
 				},
 				bindBox : function(){
-					var that = this;
+					var self = this;
 					this.tooltipBox.onmouseover = function(){
-						that.isTooltipBoxHover = true;
+						self.isTooltipBoxHover = true;
 					};
 					this.tooltipBox.onmouseout = function(){
-						that.isTooltipBoxHover = false;
-						var delayRemoveBox = new Function(that.name+ ".delayRemoveBox();");
-						setTimeout(delayRemoveBox,300);
+						self.isTooltipBoxHover = false;
+						var delayRemoveBox = new Function(self.name+ ".delayRemoveBox();");
+//						setTimeout(delayRemoveBox,300);
+						delayRemoveBox();
 					};
 				},
 				delayRemoveBox: function(){

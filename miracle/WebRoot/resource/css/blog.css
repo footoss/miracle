@@ -1,0 +1,49 @@
+
+/*======================== common ==========================*/
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: source_code_pro;
+	font-size:1em;
+}
+
+
+h1,h2,h3,h4,h5,h6{
+	margin: 30px 5px;
+	text-transform: uppercase
+}
+
+
+p{
+	text-indent: 4em;
+	margin: 15px 5px;
+	line-height: 1.5em;
+}
+
+
+
+/*======================== header==========================*/
+
+/*======================== main body==========================*/
+fieldset {
+	margin: 5px;
+	text-align:center;
+	vertical-align: middle;
+	border: 1px solid #dedede;
+  border-radius:5px;            /* W3C syntax */
+  -moz-border-radius: 5px;      /* Gecko browsers */
+  -webkit-border-radius: 5px;   /* Webkit browsers */
+}
+
+legend{
+	font-weight: bold;
+}
+code {
+	
+}
+
+
+/*======================== footer ==========================*/
+
+
+/*==================================================*/
